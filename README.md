@@ -7,7 +7,7 @@ FairShift TrustLoop is a web application built for **PromptWars**, organised by 
 
 ## 🌐 Live Demo
 
-https://fairshiftloop.lovable.app/
+https://fairshiftloop.vercel.app
 
 ## 🎯 Problem Statement
 

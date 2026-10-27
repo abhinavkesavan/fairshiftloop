@@ -16,7 +16,7 @@ export type Shift = {
   date: string; // YYYY-MM-DD
   hours: number;
   isExtraShift: boolean; // a scheduled day off worked as an additional shift
-  note?: string;
+  note?: string | undefined;
 };
 
 export type ShiftSplit = { regular: number; extra: number; overtime: number };
@@ -61,7 +61,7 @@ export function computePayslip(shifts: Shift[], unpaidLeaveDays: number, p: PayP
 
 /** Inclusive number of days of [start,end] falling inside month "YYYY-MM". */
 export function leaveDaysInMonth(start: string, end: string, month: string): number {
-  const [y, m] = month.split("-").map(Number);
+  const [y = 1970, m = 1] = month.split("-").map(Number);
   const mStart = Date.UTC(y, m - 1, 1);
   const mEnd = Date.UTC(y, m, 0);
   const s = Math.max(Date.parse(start + "T00:00:00Z"), mStart);

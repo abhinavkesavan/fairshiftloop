@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LeaveRouteImport } from './routes/leave'
+import { Route as PayslipRouteImport } from './routes/payslip'
+import { Route as ReportRouteImport } from './routes/report'
+import { Route as ShiftsRouteImport } from './routes/shifts'
+import { Route as TrackRouteImport } from './routes/track'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminLeaveRouteImport } from './routes/admin.leave'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminSalaryRouteImport } from './routes/admin.salary'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeaveRoute = LeaveRouteImport.update({
+  id: '/leave',
+  path: '/leave',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayslipRoute = PayslipRouteImport.update({
+  id: '/payslip',
+  path: '/payslip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShiftsRoute = ShiftsRouteImport.update({
+  id: '/shifts',
+  path: '/shifts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLeaveRoute = AdminLeaveRouteImport.update({
+  id: '/admin/leave',
+  path: '/admin/leave',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSalaryRoute = AdminSalaryRouteImport.update({
+  id: '/admin/salary',
+  path: '/admin/salary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/leave': typeof LeaveRoute
+  '/payslip': typeof PayslipRoute
+  '/report': typeof ReportRoute
+  '/shifts': typeof ShiftsRoute
+  '/track': typeof TrackRoute
+  '/admin/leave': typeof AdminLeaveRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/salary': typeof AdminSalaryRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/leave': typeof LeaveRoute
+  '/payslip': typeof PayslipRoute
+  '/report': typeof ReportRoute
+  '/shifts': typeof ShiftsRoute
+  '/track': typeof TrackRoute
+  '/admin/leave': typeof AdminLeaveRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/salary': typeof AdminSalaryRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/leave': typeof LeaveRoute
+  '/payslip': typeof PayslipRoute
+  '/report': typeof ReportRoute
+  '/shifts': typeof ShiftsRoute
+  '/track': typeof TrackRoute
+  '/admin/leave': typeof AdminLeaveRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/salary': typeof AdminSalaryRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/leave'
+    | '/payslip'
+    | '/report'
+    | '/shifts'
+    | '/track'
+    | '/admin/leave'
+    | '/admin/reports'
+    | '/admin/salary'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/leave'
+    | '/payslip'
+    | '/report'
+    | '/shifts'
+    | '/track'
+    | '/admin/leave'
+    | '/admin/reports'
+    | '/admin/salary'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/leave'
+    | '/payslip'
+    | '/report'
+    | '/shifts'
+    | '/track'
+    | '/admin/leave'
+    | '/admin/reports'
+    | '/admin/salary'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LeaveRoute: typeof LeaveRoute
+  PayslipRoute: typeof PayslipRoute
+  ReportRoute: typeof ReportRoute
+  ShiftsRoute: typeof ShiftsRoute
+  TrackRoute: typeof TrackRoute
+  AdminLeaveRoute: typeof AdminLeaveRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminSalaryRoute: typeof AdminSalaryRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leave': {
+      id: '/leave'
+      path: '/leave'
+      fullPath: '/leave'
+      preLoaderRoute: typeof LeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payslip': {
+      id: '/payslip'
+      path: '/payslip'
+      fullPath: '/payslip'
+      preLoaderRoute: typeof PayslipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shifts': {
+      id: '/shifts'
+      path: '/shifts'
+      fullPath: '/shifts'
+      preLoaderRoute: typeof ShiftsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leave': {
+      id: '/admin/leave'
+      path: '/admin/leave'
+      fullPath: '/admin/leave'
+      preLoaderRoute: typeof AdminLeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/salary': {
+      id: '/admin/salary'
+      path: '/admin/salary'
+      fullPath: '/admin/salary'
+      preLoaderRoute: typeof AdminSalaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LeaveRoute: LeaveRoute,
+  PayslipRoute: PayslipRoute,
+  ReportRoute: ReportRoute,
+  ShiftsRoute: ShiftsRoute,
+  TrackRoute: TrackRoute,
+  AdminLeaveRoute: AdminLeaveRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminSalaryRoute: AdminSalaryRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

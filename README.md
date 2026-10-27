@@ -83,7 +83,7 @@ This project aligns with **UN SDG 8: Decent Work and Economic Growth**, supporti
 - **Hackathon:** PromptWars
 - **Organiser:** ACM Student Chapter, SRMIST
 - **Theme:** SDG 8 — Decent Work and Economic Growth
-- **Live Application:** https://fairshiftloop.lovable.app/
+- **Live Application:** https://fairshiftloop.vercel.app
 
 ## 👨‍💻 Purpose
 

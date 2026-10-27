@@ -20,14 +20,14 @@ function Report() {
   const [location, setLocation] = useState("");
   const [anonymous, setAnonymous] = useState(true);
   const [name, setName] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"category" | "description" | "location" | "name", string>>>({});
   const [done, setDone] = useState<string | null>(null);
 
   const preview = description.trim().length >= 15 ? triage(description, (category || "Other") as Category) : null;
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    const err: Record<string, string> = {};
+    const err: Partial<Record<"category" | "description" | "location" | "name", string>> = {};
     if (!category) err.category = "Please choose what the concern is about.";
     const d = description.trim();
     if (d.length < 15) err.description = "Please describe the problem in at least 15 characters.";

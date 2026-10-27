@@ -18,16 +18,16 @@ export type QueryStatus = "open" | "reviewing" | "resolved";
 export type CaseNote = { at: string; text: string; status: CaseStatus };
 export type Case = {
   ref: string; industry: Industry; category: Category; urgency: Urgency; description: string;
-  location?: string; anonymous: boolean; reporterName?: string; status: CaseStatus;
+  location?: string | undefined; anonymous: boolean; reporterName?: string | undefined; status: CaseStatus;
   createdAt: string; updatedAt: string; notes: CaseNote[]; triage: Triage;
 };
 export type Leave = {
-  id: string; industry: Industry; type: LeaveType; start: string; end: string; reason?: string;
-  status: LeaveStatus; adminNote?: string; createdAt: string;
+  id: string; industry: Industry; type: LeaveType; start: string; end: string; reason?: string | undefined;
+  status: LeaveStatus; adminNote?: string | undefined; createdAt: string;
 };
 export type SalaryQuery = {
   id: string; industry: Industry; type: (typeof QUERY_TYPES)[number]; details: string;
-  status: QueryStatus; response?: string; createdAt: string;
+  status: QueryStatus; response?: string | undefined; createdAt: string;
 };
 
 export type State = {

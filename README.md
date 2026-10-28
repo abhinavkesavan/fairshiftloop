@@ -3,7 +3,7 @@
 
 ### A Decent Work and Workplace Transparency Platform
 
-FairShift TrustLoop is a web application built for **PromptWars**, organised by the ACM Student Chapter at SRMIST. The project addresses the challenge **"FairShift – A Decent Work Platform for Employee-Intensive Organisations"**, aligned with **UN Sustainable Development Goal 8: Decent Work and Economic Growth**.
+FairShift TrustLoop is a web application built for **PromptWars**, organised by the ACM Student Chapter at SRMIST. The project addresses the challenge **"FairShift – A Decent Work Platform for Employee-Intensive Organisations"**, aligned with **UN Sustainable Development Goal 8: Decent Work and Growth**.
 
 ## 🌐 Live Demo
 

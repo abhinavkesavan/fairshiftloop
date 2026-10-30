@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { AppNav } from "@/components/AppNav";
+import type { AuthProvider } from "@/lib/auth";
 
 function NotFoundComponent() {
   return (
@@ -50,7 +50,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient; auth: AuthProvider }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -89,16 +89,17 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+  const { queryClient, auth } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => auth.onIdentityChange(() => {
+    void queryClient.cancelQueries().then(() => {
+      queryClient.clear();
+      void router.invalidate();
+    });
+  }), [auth, queryClient, router]);
   return (
     <QueryClientProvider client={queryClient}>
-      <AppNav />
-      <main className="mx-auto max-w-7xl px-4 py-8">
-        <Outlet />
-      </main>
-      <footer className="mx-auto max-w-7xl px-4 pb-10 text-sm text-muted-foreground">
-        FairShift TrustLoop · Supporting UN SDG 8 — Decent Work and Economic Growth. Sample data and pay policies are demonstrations, not legally verified payroll rules.
-      </footer>
+      <Outlet />
     </QueryClientProvider>
   );
 }

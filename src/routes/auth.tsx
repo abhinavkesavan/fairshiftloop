@@ -7,7 +7,7 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   validateSearch: (search: Record<string, unknown>): { redirect: string } => ({ redirect: safeReturnPath(search["redirect"]) }),
   beforeLoad: async ({ context, search }) => {
-    if (await getVerifiedUser(context.auth)) throw redirect({ to: search.redirect, replace: true });
+    if (await getVerifiedUser(context.auth)) throw redirect({ href: search.redirect, replace: true });
   },
   head: pageHead("Login", "Log in to your FairShift TrustLoop workplace account."),
   component: () => <LoginPage returnTo={Route.useSearch().redirect} />,

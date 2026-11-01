@@ -4,7 +4,7 @@ import { Badge, Field, PageHeader } from "@/components/fs";
 import { CASE_STATUSES, INDUSTRY_LABEL, fmtDate, useAppState } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/track")({
+export const Route = createFileRoute("/_protected/track")({
   head: pageHead("Track a Case", "Enter your case reference to see the latest status of your report."),
   component: Track,
 });

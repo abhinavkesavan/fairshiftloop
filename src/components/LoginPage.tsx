@@ -11,7 +11,7 @@ export function LoginPage({ returnTo }: { returnTo?: string }) {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [errors, setErrors] = useState<{ identifier?: string; password?: string }>({});
+  const [errors, setErrors] = useState<{ identifier?: string | undefined; password?: string | undefined }>({});
   const [error, setError] = useState("");
 
   async function submit(event: FormEvent<HTMLFormElement>) {

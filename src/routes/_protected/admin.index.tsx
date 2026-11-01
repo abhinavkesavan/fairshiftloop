@@ -3,7 +3,7 @@ import { Badge, PageHeader, Stat } from "@/components/fs";
 import { CATEGORIES, INDUSTRY_LABEL, fmtDate, useAppState } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/admin/")({
+export const Route = createFileRoute("/_protected/admin/")({
   head: pageHead("Employer Dashboard", "Overview of reported cases, safety issues, leave requests and salary queries."),
   component: Dashboard,
 });

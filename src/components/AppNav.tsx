@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { INDUSTRY_LABEL, resetDemo, update, useAppState, type Industry } from "@/lib/store";
 
 const worker = [
-  { to: "/", label: "Worker Portal" },
+  { to: "/dashboard", label: "Worker Portal" },
   { to: "/report", label: "Report a Concern" },
   { to: "/track", label: "Track a Case" },
   { to: "/payslip", label: "My Payslip" },
@@ -24,7 +24,7 @@ export function AppNav() {
   return (
     <header className="bg-navy text-navy-foreground">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/dashboard" className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-teal font-display text-lg font-extrabold text-teal-foreground">F</span>
           <span className="font-display text-lg font-extrabold">FairShift <span className="font-semibold text-teal">TrustLoop</span></span>
         </Link>

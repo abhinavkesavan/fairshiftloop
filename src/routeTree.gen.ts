@@ -10,108 +10,134 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as LeaveRouteImport } from './routes/leave'
-import { Route as PayslipRouteImport } from './routes/payslip'
-import { Route as ReportRouteImport } from './routes/report'
-import { Route as ShiftsRouteImport } from './routes/shifts'
-import { Route as TrackRouteImport } from './routes/track'
-import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as AdminLeaveRouteImport } from './routes/admin.leave'
-import { Route as AdminReportsRouteImport } from './routes/admin.reports'
-import { Route as AdminSalaryRouteImport } from './routes/admin.salary'
+import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as ProtectedLeaveRouteImport } from './routes/_protected/leave'
+import { Route as ProtectedPayslipRouteImport } from './routes/_protected/payslip'
+import { Route as ProtectedReportRouteImport } from './routes/_protected/report'
+import { Route as ProtectedShiftsRouteImport } from './routes/_protected/shifts'
+import { Route as ProtectedTrackRouteImport } from './routes/_protected/track'
+import { Route as ProtectedAdminIndexRouteImport } from './routes/_protected/admin.index'
+import { Route as ProtectedAdminLeaveRouteImport } from './routes/_protected/admin.leave'
+import { Route as ProtectedAdminReportsRouteImport } from './routes/_protected/admin.reports'
+import { Route as ProtectedAdminSalaryRouteImport } from './routes/_protected/admin.salary'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LeaveRoute = LeaveRouteImport.update({
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedLeaveRoute = ProtectedLeaveRouteImport.update({
   id: '/leave',
   path: '/leave',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const PayslipRoute = PayslipRouteImport.update({
+const ProtectedPayslipRoute = ProtectedPayslipRouteImport.update({
   id: '/payslip',
   path: '/payslip',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const ReportRoute = ReportRouteImport.update({
+const ProtectedReportRoute = ProtectedReportRouteImport.update({
   id: '/report',
   path: '/report',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const ShiftsRoute = ShiftsRouteImport.update({
+const ProtectedShiftsRoute = ProtectedShiftsRouteImport.update({
   id: '/shifts',
   path: '/shifts',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const TrackRoute = TrackRouteImport.update({
+const ProtectedTrackRoute = ProtectedTrackRouteImport.update({
   id: '/track',
   path: '/track',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
+const ProtectedAdminIndexRoute = ProtectedAdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AdminLeaveRoute = AdminLeaveRouteImport.update({
+const ProtectedAdminLeaveRoute = ProtectedAdminLeaveRouteImport.update({
   id: '/admin/leave',
   path: '/admin/leave',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AdminReportsRoute = AdminReportsRouteImport.update({
+const ProtectedAdminReportsRoute = ProtectedAdminReportsRouteImport.update({
   id: '/admin/reports',
   path: '/admin/reports',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AdminSalaryRoute = AdminSalaryRouteImport.update({
+const ProtectedAdminSalaryRoute = ProtectedAdminSalaryRouteImport.update({
   id: '/admin/salary',
   path: '/admin/salary',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/leave': typeof LeaveRoute
-  '/payslip': typeof PayslipRoute
-  '/report': typeof ReportRoute
-  '/shifts': typeof ShiftsRoute
-  '/track': typeof TrackRoute
-  '/admin/leave': typeof AdminLeaveRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/salary': typeof AdminSalaryRoute
-  '/admin/': typeof AdminIndexRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/leave': typeof ProtectedLeaveRoute
+  '/payslip': typeof ProtectedPayslipRoute
+  '/report': typeof ProtectedReportRoute
+  '/shifts': typeof ProtectedShiftsRoute
+  '/track': typeof ProtectedTrackRoute
+  '/admin/leave': typeof ProtectedAdminLeaveRoute
+  '/admin/reports': typeof ProtectedAdminReportsRoute
+  '/admin/salary': typeof ProtectedAdminSalaryRoute
+  '/admin/': typeof ProtectedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/leave': typeof LeaveRoute
-  '/payslip': typeof PayslipRoute
-  '/report': typeof ReportRoute
-  '/shifts': typeof ShiftsRoute
-  '/track': typeof TrackRoute
-  '/admin/leave': typeof AdminLeaveRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/salary': typeof AdminSalaryRoute
-  '/admin': typeof AdminIndexRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/leave': typeof ProtectedLeaveRoute
+  '/payslip': typeof ProtectedPayslipRoute
+  '/report': typeof ProtectedReportRoute
+  '/shifts': typeof ProtectedShiftsRoute
+  '/track': typeof ProtectedTrackRoute
+  '/admin/leave': typeof ProtectedAdminLeaveRoute
+  '/admin/reports': typeof ProtectedAdminReportsRoute
+  '/admin/salary': typeof ProtectedAdminSalaryRoute
+  '/admin': typeof ProtectedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/leave': typeof LeaveRoute
-  '/payslip': typeof PayslipRoute
-  '/report': typeof ReportRoute
-  '/shifts': typeof ShiftsRoute
-  '/track': typeof TrackRoute
-  '/admin/leave': typeof AdminLeaveRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/salary': typeof AdminSalaryRoute
-  '/admin/': typeof AdminIndexRoute
+  '/_protected': typeof ProtectedRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/leave': typeof ProtectedLeaveRoute
+  '/_protected/payslip': typeof ProtectedPayslipRoute
+  '/_protected/report': typeof ProtectedReportRoute
+  '/_protected/shifts': typeof ProtectedShiftsRoute
+  '/_protected/track': typeof ProtectedTrackRoute
+  '/_protected/admin/leave': typeof ProtectedAdminLeaveRoute
+  '/_protected/admin/reports': typeof ProtectedAdminReportsRoute
+  '/_protected/admin/salary': typeof ProtectedAdminSalaryRoute
+  '/_protected/admin/': typeof ProtectedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
+    | '/dashboard'
     | '/leave'
     | '/payslip'
     | '/report'
@@ -124,6 +150,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
+    | '/dashboard'
     | '/leave'
     | '/payslip'
     | '/report'
@@ -136,28 +164,24 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/leave'
-    | '/payslip'
-    | '/report'
-    | '/shifts'
-    | '/track'
-    | '/admin/leave'
-    | '/admin/reports'
-    | '/admin/salary'
-    | '/admin/'
+    | '/_protected'
+    | '/auth'
+    | '/_protected/dashboard'
+    | '/_protected/leave'
+    | '/_protected/payslip'
+    | '/_protected/report'
+    | '/_protected/shifts'
+    | '/_protected/track'
+    | '/_protected/admin/leave'
+    | '/_protected/admin/reports'
+    | '/_protected/admin/salary'
+    | '/_protected/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LeaveRoute: typeof LeaveRoute
-  PayslipRoute: typeof PayslipRoute
-  ReportRoute: typeof ReportRoute
-  ShiftsRoute: typeof ShiftsRoute
-  TrackRoute: typeof TrackRoute
-  AdminLeaveRoute: typeof AdminLeaveRoute
-  AdminReportsRoute: typeof AdminReportsRoute
-  AdminSalaryRoute: typeof AdminSalaryRoute
-  AdminIndexRoute: typeof AdminIndexRoute
+  ProtectedRoute: typeof ProtectedRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -169,83 +193,127 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/leave': {
-      id: '/leave'
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/leave': {
+      id: '/_protected/leave'
       path: '/leave'
       fullPath: '/leave'
-      preLoaderRoute: typeof LeaveRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedLeaveRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/payslip': {
-      id: '/payslip'
+    '/_protected/payslip': {
+      id: '/_protected/payslip'
       path: '/payslip'
       fullPath: '/payslip'
-      preLoaderRoute: typeof PayslipRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedPayslipRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/report': {
-      id: '/report'
+    '/_protected/report': {
+      id: '/_protected/report'
       path: '/report'
       fullPath: '/report'
-      preLoaderRoute: typeof ReportRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedReportRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/shifts': {
-      id: '/shifts'
+    '/_protected/shifts': {
+      id: '/_protected/shifts'
       path: '/shifts'
       fullPath: '/shifts'
-      preLoaderRoute: typeof ShiftsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedShiftsRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/track': {
-      id: '/track'
+    '/_protected/track': {
+      id: '/_protected/track'
       path: '/track'
       fullPath: '/track'
-      preLoaderRoute: typeof TrackRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedTrackRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/admin/': {
-      id: '/admin/'
+    '/_protected/admin/': {
+      id: '/_protected/admin/'
       path: '/admin'
       fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAdminIndexRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/admin/leave': {
-      id: '/admin/leave'
+    '/_protected/admin/leave': {
+      id: '/_protected/admin/leave'
       path: '/admin/leave'
       fullPath: '/admin/leave'
-      preLoaderRoute: typeof AdminLeaveRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAdminLeaveRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/admin/reports': {
-      id: '/admin/reports'
+    '/_protected/admin/reports': {
+      id: '/_protected/admin/reports'
       path: '/admin/reports'
       fullPath: '/admin/reports'
-      preLoaderRoute: typeof AdminReportsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAdminReportsRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/admin/salary': {
-      id: '/admin/salary'
+    '/_protected/admin/salary': {
+      id: '/_protected/admin/salary'
       path: '/admin/salary'
       fullPath: '/admin/salary'
-      preLoaderRoute: typeof AdminSalaryRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAdminSalaryRouteImport
+      parentRoute: typeof ProtectedRoute
     }
   }
 }
 
+interface ProtectedRouteChildren {
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedLeaveRoute: typeof ProtectedLeaveRoute
+  ProtectedPayslipRoute: typeof ProtectedPayslipRoute
+  ProtectedReportRoute: typeof ProtectedReportRoute
+  ProtectedShiftsRoute: typeof ProtectedShiftsRoute
+  ProtectedTrackRoute: typeof ProtectedTrackRoute
+  ProtectedAdminLeaveRoute: typeof ProtectedAdminLeaveRoute
+  ProtectedAdminReportsRoute: typeof ProtectedAdminReportsRoute
+  ProtectedAdminSalaryRoute: typeof ProtectedAdminSalaryRoute
+  ProtectedAdminIndexRoute: typeof ProtectedAdminIndexRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedLeaveRoute: ProtectedLeaveRoute,
+  ProtectedPayslipRoute: ProtectedPayslipRoute,
+  ProtectedReportRoute: ProtectedReportRoute,
+  ProtectedShiftsRoute: ProtectedShiftsRoute,
+  ProtectedTrackRoute: ProtectedTrackRoute,
+  ProtectedAdminLeaveRoute: ProtectedAdminLeaveRoute,
+  ProtectedAdminReportsRoute: ProtectedAdminReportsRoute,
+  ProtectedAdminSalaryRoute: ProtectedAdminSalaryRoute,
+  ProtectedAdminIndexRoute: ProtectedAdminIndexRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LeaveRoute: LeaveRoute,
-  PayslipRoute: PayslipRoute,
-  ReportRoute: ReportRoute,
-  ShiftsRoute: ShiftsRoute,
-  TrackRoute: TrackRoute,
-  AdminLeaveRoute: AdminLeaveRoute,
-  AdminReportsRoute: AdminReportsRoute,
-  AdminSalaryRoute: AdminSalaryRoute,
-  AdminIndexRoute: AdminIndexRoute,
+  ProtectedRoute: ProtectedRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

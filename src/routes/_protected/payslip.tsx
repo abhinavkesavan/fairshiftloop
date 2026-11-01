@@ -5,7 +5,7 @@ import { computePayslip, inr, leaveDaysInMonth } from "@/lib/payroll";
 import { PAY_MONTH, QUERY_TYPES, WORKERS, fmtDate, uid, update, useAppState } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/payslip")({
+export const Route = createFileRoute("/_protected/payslip")({
   head: pageHead("My Payslip", "A transparent, line-by-line breakdown of your earnings, deductions and estimated net pay."),
   component: Payslip,
 });

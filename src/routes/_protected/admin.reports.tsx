@@ -4,7 +4,7 @@ import { Badge, DemoNote, Empty, Field, PageHeader } from "@/components/fs";
 import { CASE_STATUSES, CATEGORIES, INDUSTRY_LABEL, URGENCIES, fmtDate, update, useAppState, type Case, type CaseStatus } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/admin/reports")({
+export const Route = createFileRoute("/_protected/admin/reports")({
   head: pageHead("Manage Reports", "Filter worker reports, update case status and add resolution notes."),
   component: Reports,
 });

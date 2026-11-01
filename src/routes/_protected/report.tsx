@@ -5,7 +5,7 @@ import { CATEGORIES, INDUSTRY_LABEL, URGENCIES, newRef, update, useAppState, typ
 import { triage } from "@/lib/triage";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/report")({
+export const Route = createFileRoute("/_protected/report")({
   head: pageHead("Report a Concern", "Report a safety hazard, pay problem or workplace grievance — anonymously if you prefer."),
   component: Report,
 });

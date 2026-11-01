@@ -5,7 +5,7 @@ import { leaveDays } from "@/lib/payroll";
 import { INDUSTRY_LABEL, WORKERS, fmtDate, update, useAppState, type Leave, type LeaveStatus } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/admin/leave")({
+export const Route = createFileRoute("/_protected/admin/leave")({
   head: pageHead("Manage Leave", "Approve or reject worker leave requests."),
   component: ManageLeave,
 });

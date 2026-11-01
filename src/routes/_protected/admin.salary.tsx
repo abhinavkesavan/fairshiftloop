@@ -5,7 +5,7 @@ import type { PayPolicy } from "@/lib/payroll";
 import { INDUSTRY_LABEL, fmtDate, update, useAppState, type QueryStatus, type SalaryQuery } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/admin/salary")({
+export const Route = createFileRoute("/_protected/admin/salary")({
   head: pageHead("Review Salary Queries", "Respond to worker payslip queries and configure demo pay policies."),
   component: Salary,
 });

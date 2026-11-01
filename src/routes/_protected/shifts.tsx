@@ -5,7 +5,7 @@ import { classifyShift } from "@/lib/payroll";
 import { uid, update, useAppState } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/shifts")({
+export const Route = createFileRoute("/_protected/shifts")({
   head: pageHead("My Shifts", "Your logged shifts with regular, additional-shift and overtime hours explained."),
   component: Shifts,
 });

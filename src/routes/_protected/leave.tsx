@@ -5,7 +5,7 @@ import { leaveDays } from "@/lib/payroll";
 import { LEAVE_ENTITLEMENT, fmtDate, uid, update, useAppState, type LeaveType } from "@/lib/store";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/leave")({
+export const Route = createFileRoute("/_protected/leave")({
   head: pageHead("My Leave", "Request paid, unpaid or medical leave and see your balances and request status."),
   component: Leave,
 });

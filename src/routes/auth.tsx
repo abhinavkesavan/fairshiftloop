@@ -5,7 +5,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
-  validateSearch: (search: Record<string, unknown>) => ({ redirect: safeReturnPath(search.redirect) }),
+  validateSearch: (search: Record<string, unknown>): { redirect: string } => ({ redirect: safeReturnPath(search["redirect"]) }),
   beforeLoad: async ({ context, search }) => {
     if (await getVerifiedUser(context.auth)) throw redirect({ to: search.redirect, replace: true });
   },

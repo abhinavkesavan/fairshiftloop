@@ -8,6 +8,6 @@ export const Route = createFileRoute("/")({
   beforeLoad: async ({ context }) => {
     if (await getVerifiedUser(context.auth)) throw redirect({ to: "/dashboard", replace: true });
   },
-  head: pageHead("Login", "Log in to FairShift TrustLoop to report concerns, check pay and manage leave."),
+  head: pageHead("Workplace Sign-in", "Log in to FairShift TrustLoop to report concerns, check pay and manage leave."),
   component: () => <LoginPage returnTo="/dashboard" />,
 });

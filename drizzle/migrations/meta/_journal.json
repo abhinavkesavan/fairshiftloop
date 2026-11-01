@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793516999743,
+      "tag": "0000_account_profiles_and_private_employer_invitations",
+      "breakpoints": true
+    }
+  ]
+}

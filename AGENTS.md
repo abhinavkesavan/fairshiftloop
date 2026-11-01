@@ -9,6 +9,7 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep the account-provider boundary in `src/lib/auth.ts` fail-closed until a real provider is connected; browser demo data is never identity or authorization.
+- Revalidate Cloud identity through the account-provider boundary; browser demo data is never identity or authorization.
 - Existing application pages live under the client-only `_protected` layout, retaining their URLs; `/` and `/auth` are public login surfaces and the worker home is `/dashboard`.
-- A future account integration must revalidate sessions, attach identity to protected server requests, enforce owner/employer permissions server-side, and map profiles to employee records before exposing the retained demo workflows.
+- Account roles and employee links are read through authenticated server functions and owner-scoped policies; employer privileges require a private email-bound invitation, never signup metadata.
+- Retained demo workflows must remain unmounted until their data has been migrated to owner/employer-scoped Cloud records; an employee link alone does not authorize demo records.

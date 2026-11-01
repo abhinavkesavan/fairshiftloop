@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 export const loginSchema = z.object({
   identifier: z.string().trim().min(1, "Enter your username or email.").max(254, "Use no more than 254 characters.").refine((value) => !value.includes("@") || z.string().email().safeParse(value).success, "Enter a valid email address."),
@@ -18,16 +19,27 @@ export interface AuthProvider {
 
 export const AUTH_UNAVAILABLE = "Login is not available yet because the account service is not connected. No credentials have been sent or saved.";
 
-// Deliberately fail closed. Replace this adapter only when real auth is connected.
+// Identity is always revalidated with the real account provider.
 export const authProvider: AuthProvider = {
-  configured: false,
-  async getUser() { return null; },
-  async signIn(credentials) {
-    loginSchema.parse(credentials);
-    throw new Error(AUTH_UNAVAILABLE);
+  configured: true,
+  async getUser() {
+    const { data, error } = await supabase.auth.getUser();
+    if (error || !data.user) return null;
+    return { id: data.user.id };
   },
-  async signOut() {},
-  onIdentityChange() { return () => {}; },
+  async signIn(credentials) {
+    const values = loginSchema.parse(credentials);
+    if (!z.string().email().safeParse(values.identifier).success) throw new Error("Use your account email address to sign in.");
+    const { error } = await supabase.auth.signInWithPassword({ email: values.identifier, password: values.password });
+    if (error) throw error;
+  },
+  async signOut() { const { error } = await supabase.auth.signOut(); if (error) throw error; },
+  onIdentityChange(listener) {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (["SIGNED_IN", "SIGNED_OUT", "USER_UPDATED"].includes(event)) listener();
+    });
+    return () => data.subscription.unsubscribe();
+  },
 };
 
 export async function getVerifiedUser(provider: AuthProvider): Promise<AuthUser | null> {
